@@ -1,8 +1,8 @@
 package VSTest
 
-import VSTest.buildTypes.*
-import VSTest.vcsRoots.*
-import jetbrains.buildServer.configs.kotlin.v10.*
+import VSTest.buildTypes.MSTest_Build
+import VSTest.buildTypes.VSTest_Build
+import VSTest.vcsRoots.VSTest_HttpsJuliaReshBitbucketOrgOrybakDotnetplaygroundGit
 import jetbrains.buildServer.configs.kotlin.v10.Project
 
 object Project : Project({
@@ -14,4 +14,5 @@ object Project : Project({
     vcsRoot(VSTest_HttpsJuliaReshBitbucketOrgOrybakDotnetplaygroundGit)
 
     buildType(VSTest_Build)
+    buildType(MSTest_Build)
 })
