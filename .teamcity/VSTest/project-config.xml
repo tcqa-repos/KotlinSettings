@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="a0fbae37-31ad-4e0d-93fa-0704d79aeeaa" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/10.0/project-config.xsd">
+  <name>VSTest</name>
+  <parameters />
+  <cleanup />
+</project>
+
