@@ -74,9 +74,9 @@ object bt384 : BuildType({
             }
             targets = "dist"
             jvmArgs = "-Xmx1G -ea"
-            param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "udalov")
             param("org.jfrog.artifactory.selectedDeployableServer.overrideDefaultDeployerCredentials", "true")
-            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "zxx2a11c9292201b6c809d59f4f98fe98d1f1b3e6e923118575")
+            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "credentialsJSON:4e35690c-23ec-4c19-a5fd-8f421711bea3")
+            param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "udalov")
         }
         ideaRunner {
             pathToProject = ""
@@ -99,11 +99,11 @@ object bt384 : BuildType({
             targetJdkHome = "%env.JDK_18%"
             runConfigurations = "Codegen Tests on Android"
             makeRequiredModulesOnly = true
+            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
             param("teamcity.coverage.idea.excludePatterns", """
                 #teamcity:patternsMode=regexp
                 org.jetbrains.jet.cli.*
             """.trimIndent())
-            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
         }
     }
 

@@ -21,6 +21,6 @@ object Kotlin_KotlinGithubGoodwinnkMaster : GitVcsRoot({
     useTagsAsBranches = true
     authMethod = password {
         userName = "goodwinnk"
-        password = "zxxe628e1fb896d7285821aabdc3c3bf812bf358d36ac3fdd2c"
+        password = "credentialsJSON:dbf840aa-4d88-455c-a597-db5b553eb11f"
     }
 })

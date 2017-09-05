@@ -46,9 +46,9 @@ object Kotlin_CompilerAndPluginBootstrapNoTests : BuildType({
             antArguments = "-Dbootstrap.compiler.home=%kotlin.bootstrap.home%"
             jdkHome = "%env.JDK_16%"
             jvmArgs = "-Xmx1024m -ea -XX:MaxPermSize=200m"
-            param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "udalov")
             param("org.jfrog.artifactory.selectedDeployableServer.overrideDefaultDeployerCredentials", "true")
-            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "zxx10a7df6d479251d4de4363f3ccae2df8")
+            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "credentialsJSON:04f1f14d-e372-4219-8bbe-03a8bea92888")
+            param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "udalov")
         }
         ideaRunner {
             name = "Intellij IDEA Project - No Tests"
@@ -76,11 +76,11 @@ object Kotlin_CompilerAndPluginBootstrapNoTests : BuildType({
             targetJdkHome = "%kotlin.jdk18%"
             makeRequiredModulesOnly = true
             artifactsToBuild = "KotlinJpsPlugin"
+            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
             param("teamcity.coverage.idea.excludePatterns", """
                 #teamcity:patternsMode=regexp
                 org.jetbrains.jet.cli.*
             """.trimIndent())
-            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
         }
         ant {
             name = "Post Build - revertTemplateFiles"

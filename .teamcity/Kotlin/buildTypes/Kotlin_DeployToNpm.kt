@@ -22,7 +22,7 @@ object Kotlin_DeployToNpm : BuildType({
     params {
         param("system.kotlin.compiler.deploy.version", "0.0.0")
         param("system.kotlin.deploy.version", "%dep.bt345.build.number%")
-        password("system.kotlin.npmjs.auth.token", "zxx82352b8ce01877a2b9859ab8dc8c55f453aceab7629d32e63ea7fdb88acbc59cd06abf4f6bb644fa", label = "kotlin.npmjs.auth.token")
+        password("system.kotlin.npmjs.auth.token", "credentialsJSON:13a2b948-8df3-4cdc-866b-1fffa7034e7b", label = "kotlin.npmjs.auth.token")
     }
 
     vcs {
@@ -72,13 +72,13 @@ object Kotlin_DeployToNpm : BuildType({
             schedulingPolicy = cron {
                 minutes = "*/3"
             }
+            branchFilter = "+:<default>"
             triggerBuild = onWatchedBuildChange {
                 buildType = bt345.extId
                 watchedBuildRule = ScheduleTrigger.WatchedBuildRule.TAG
                 watchedBuildTag = "bootstrap"
             }
             withPendingChangesOnly = false
-            param("branchFilter", "+:<default>")
             param("dayOfWeek", "Sunday")
         }
     }

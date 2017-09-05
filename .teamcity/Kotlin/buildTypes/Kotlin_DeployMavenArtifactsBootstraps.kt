@@ -42,10 +42,10 @@ object Kotlin_DeployMavenArtifactsBootstraps : BuildType({
                 options = listOf("bintray-repo" to "bintray", "sonatype-nexus-snapshots-repo" to "sonatype-nexus-snapshots"))
         select("system.deploy-url", "https://api.bintray.com/maven/kotlin/kotlin-dev/kotlin;publish=1",
                 options = listOf("sonatype-url (maven central)" to "http://oss.sonatype.org/service/local/staging/deploy/maven2/", "bintray-eap-1.1-url (publish manually)" to "https://api.bintray.com/maven/kotlin/kotlin-eap-1.1/kotlin", "bintray-eap-url (publish manually)" to "https://api.bintray.com/maven/kotlin/kotlin-eap/kotlin", "bintray-eap-url (publish automatically)" to "https://api.bintray.com/maven/kotlin/kotlin-eap/kotlin/;publish=1", "bintray-dev-url (publish manually)" to "https://api.bintray.com/maven/kotlin/kotlin-dev/kotlin", "bintray-dev-url (publish automatically)" to "https://api.bintray.com/maven/kotlin/kotlin-dev/kotlin;publish=1"))
-        password("system.kotlin.bintray.password", "zxx1b35d0c43c199eac801a3594a00e0550dbf2e62380451d0375d657c25ad36e38811fa87a51633ad9775d03cbe80d301b", display = ParameterDisplay.HIDDEN)
-        password("system.kotlin.bintray.user", "zxx529dbb75f4cf3ef14423ab58cd8f54b9", display = ParameterDisplay.HIDDEN)
+        password("system.kotlin.bintray.password", "credentialsJSON:b9a6d5db-5e01-44a1-8c9d-ad9d4ad696b1", display = ParameterDisplay.HIDDEN)
+        password("system.kotlin.bintray.user", "credentialsJSON:d67dd563-1873-4032-a677-6f645e354764", display = ParameterDisplay.HIDDEN)
         param("system.kotlin.key.name", "8A99F98A")
-        password("system.kotlin.key.passphrase", "zxx2d8e59f9bfb0682b42d683a8d1c537a4468a048c31f01e807a0fcab54f31132be3539aad36189de6ce2af5e8973753dc8f38903b3d45c5ee2bb05528738b23f467bd58bf8625fc017442db755ee44d53ccfb759b52161faa9c0ee5f719e2228459d02642b7d0fe93", display = ParameterDisplay.HIDDEN)
+        password("system.kotlin.key.passphrase", "credentialsJSON:c2a032c5-139a-48eb-a2ad-cd5010b52a3b", display = ParameterDisplay.HIDDEN)
         param("system.kotlinHome", "%teamcity.build.checkoutDir%/dist/kotlinc")
     }
 
@@ -114,14 +114,15 @@ object Kotlin_DeployMavenArtifactsBootstraps : BuildType({
                 """.trimIndent()
             }
             targets = "check"
+            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "credentialsJSON:dc7b3645-c5f2-4edc-bd31-24075e1efa23")
             param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "udalov")
-            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "zxx07d67df0d96aad3350e276915eed3f06863eb00272fa1d7f")
         }
         maven {
             name = "Set Version"
             goals = "versions:set"
             pomLocation = "libraries/pom.xml"
             runnerArgs = "-DnewVersion=%DeployVersion%"
+            mavenVersion = auto()
             userSettingsSelection = "jb mirror"
             useOwnLocalRepo = true
             param("org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration", "GLOBAL")
@@ -135,13 +136,12 @@ object Kotlin_DeployMavenArtifactsBootstraps : BuildType({
             userSettingsSelection = "userSettingsSelection:byPath"
             userSettingsPath = "%system.teamcity.build.checkoutDir%/libraries/maven-settings.xml"
             useOwnLocalRepo = true
-            param("jvmArgs", "-Xmx986m -XX:MaxPermSize=350m")
-            param("maven.home", "")
-            param("org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration", "GLOBAL")
-            param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "ilya.gorbunov@jetbrains.com")
-            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "zxx8c2a7eb4026210ed775d03cbe80d301b")
-            param("target.jdk.home", "%env.JDK_16%")
+            jdkHome = "%env.JDK_16%"
+            jvmArgs = "-Xmx986m -XX:MaxPermSize=350m"
             param("teamcity.build.workingDir", "libraries")
+            param("org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration", "GLOBAL")
+            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "credentialsJSON:ca821363-e8f7-4770-a063-249ebe9c48bf")
+            param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "ilya.gorbunov@jetbrains.com")
         }
         script {
             name = "Publish bintray"
@@ -170,14 +170,14 @@ object Kotlin_DeployMavenArtifactsBootstraps : BuildType({
             schedulingPolicy = daily {
                 hour = 6
             }
+            branchFilter = "+:<default>"
             triggerBuild = onWatchedBuildChange {
                 buildType = bt345.extId
                 watchedBuildRule = ScheduleTrigger.WatchedBuildRule.TAG
                 watchedBuildTag = "bootstrap"
             }
             withPendingChangesOnly = false
-            param("enforceCleanCheckout", "true")
-            param("branchFilter", "+:<default>")
+            enforceCleanCheckout = true
             param("dayOfWeek", "Sunday")
         }
         trigger {
@@ -189,13 +189,13 @@ object Kotlin_DeployMavenArtifactsBootstraps : BuildType({
             schedulingPolicy = cron {
                 minutes = "*/3"
             }
+            branchFilter = "+:<default>"
             triggerBuild = onWatchedBuildChange {
                 buildType = bt345.extId
                 watchedBuildRule = ScheduleTrigger.WatchedBuildRule.TAG
                 watchedBuildTag = "bootstrap"
                 promoteWatchedBuild = false
             }
-            param("branchFilter", "+:<default>")
             param("dayOfWeek", "Sunday")
         }
     }

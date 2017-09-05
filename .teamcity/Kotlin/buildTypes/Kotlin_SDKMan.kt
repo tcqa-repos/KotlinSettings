@@ -14,11 +14,11 @@ object Kotlin_SDKMan : BuildType({
 
     params {
         param("github.release.tag", "%kotlin.version%")
-        password("key", "zxx56f05899d0f1998fc9d4e21a7122c156945611e3990d0696d4d8bb0e913e20c5775d03cbe80d301b")
+        password("key", "credentialsJSON:c088f462-cfd8-4dd3-8505-145bf89a1b74")
         text("kotlin.version", "1.0.0-beta-3595", display = ParameterDisplay.PROMPT, allowEmpty = true)
         param("sdkman-plugin-version", "1.1-SNAPSHOT")
         param("sdkman.host", "vendors.sdkman.io")
-        password("token", "zxxec9fac3a6689be98f81ec9c425569f93a11c318a258f2d80e0bb35edb2a994718a5f54f034180ae38c57e09edfd73886e03650dda3cfbc5a834da5fd8898078b775d03cbe80d301b")
+        password("token", "credentialsJSON:be6aea26-3840-4e72-8ab9-fc2294fea18c")
     }
 
     vcs {
@@ -34,9 +34,8 @@ object Kotlin_SDKMan : BuildType({
             goals = "clean install"
             mavenVersion = bundled_3_2()
             userSettingsPath = ""
-            param("maven.home", "")
+            jdkHome = "%env.JDK_18%"
             param("org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration", "GLOBAL")
-            param("target.jdk.home", "%env.JDK_18%")
         }
         maven {
             name = "Release kotlin to sdkman"
@@ -51,9 +50,8 @@ object Kotlin_SDKMan : BuildType({
             """.trimIndent()
             mavenVersion = bundled_3_2()
             userSettingsPath = ""
-            param("maven.home", "")
+            jdkHome = "%env.JDK_18%"
             param("org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration", "GLOBAL")
-            param("target.jdk.home", "%env.JDK_18%")
         }
         maven {
             name = "Set version as default"
@@ -67,9 +65,8 @@ object Kotlin_SDKMan : BuildType({
             """.trimIndent()
             mavenVersion = bundled_3_2()
             userSettingsPath = ""
-            param("maven.home", "")
+            jdkHome = "%env.JDK_18%"
             param("org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration", "GLOBAL")
-            param("target.jdk.home", "%env.JDK_18%")
         }
         maven {
             name = "Announce on sdkman feed"
@@ -85,9 +82,8 @@ object Kotlin_SDKMan : BuildType({
             """.trimIndent()
             mavenVersion = bundled_3_2()
             userSettingsPath = ""
-            param("maven.home", "")
+            jdkHome = "%env.JDK_18%"
             param("org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration", "GLOBAL")
-            param("target.jdk.home", "%env.JDK_18%")
         }
     }
 })

@@ -47,8 +47,8 @@ object Kotlin_NetBeansPlugin : BuildType({
         maven {
             name = "Download kotlin-ide-common"
             goals = "validate"
+            mavenVersion = auto()
             userSettingsPath = ""
-            param("maven.home", "")
             param("org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration", "GLOBAL")
         }
         maven {
@@ -57,12 +57,11 @@ object Kotlin_NetBeansPlugin : BuildType({
             runnerArgs = "-X"
             mavenVersion = bundled_3_0()
             userSettingsPath = ""
-            param("jvmArgs", "-Xmx1024m -XX:MaxPermSize=300m -ea")
-            param("maven.home", "")
+            jdkHome = "%env.JDK_17%"
+            jvmArgs = "-Xmx1024m -XX:MaxPermSize=300m -ea"
             param("org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration", "GLOBAL")
+            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "credentialsJSON:22db9ec7-6894-4cd8-acdc-a2dfc55c9995")
             param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "zarechenskiy")
-            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "zxx0fe250f445e93afbcc26222d89f6cdbd")
-            param("target.jdk.home", "%env.JDK_17%")
         }
         maven {
             name = "Build and test plugins"
@@ -70,12 +69,11 @@ object Kotlin_NetBeansPlugin : BuildType({
             runnerArgs = "-X"
             mavenVersion = bundled_3_0()
             userSettingsPath = ""
-            param("jvmArgs", "-Xmx1024m -XX:MaxPermSize=300m -ea")
-            param("maven.home", "")
+            jdkHome = "%env.JDK_18%"
+            jvmArgs = "-Xmx1024m -XX:MaxPermSize=300m -ea"
             param("org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration", "GLOBAL")
+            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "credentialsJSON:22db9ec7-6894-4cd8-acdc-a2dfc55c9995")
             param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "zarechenskiy")
-            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "zxx0fe250f445e93afbcc26222d89f6cdbd")
-            param("target.jdk.home", "%env.JDK_18%")
         }
     }
 
@@ -87,10 +85,10 @@ object Kotlin_NetBeansPlugin : BuildType({
             schedulingPolicy = daily {
                 hour = 5
             }
+            branchFilter = "+:<default>"
             triggerBuild = always()
             withPendingChangesOnly = false
             param("dayOfWeek", "Sunday")
-            param("branchFilter", "+:<default>")
         }
     }
 

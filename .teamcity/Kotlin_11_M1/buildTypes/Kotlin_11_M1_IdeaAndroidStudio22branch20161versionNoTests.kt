@@ -57,11 +57,11 @@ object Kotlin_11_M1_IdeaAndroidStudio22branch20161versionNoTests : BuildType({
                 KotlinAndroidExtensions
             """.trimIndent()
             reduceTestFeedback = IdeaRunner.TestPolicy.RECENTLY_FAILED_AND_MODIFIED
+            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
             param("teamcity.coverage.idea.excludePatterns", """
                 #teamcity:patternsMode=regexp
                 org.jetbrains.jet.cli.*
             """.trimIndent())
-            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
         }
         stepsOrder = arrayListOf("RUNNER_846", "RUNNER_847", "RUNNER_848", "RUNNER_849", "RUNNER_880", "RUNNER_850", "RUNNER_851", "RUNNER_852", "RUNNER_853", "RUNNER_854", "RUNNER_855", "RUNNER_856", "RUNNER_857", "RUNNER_858", "RUNNER_859")
     }

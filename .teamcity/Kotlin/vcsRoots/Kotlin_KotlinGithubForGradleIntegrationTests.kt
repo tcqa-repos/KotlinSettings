@@ -18,6 +18,6 @@ object Kotlin_KotlinGithubForGradleIntegrationTests : GitVcsRoot({
     useMirrors = false
     authMethod = password {
         userName = "KotlinBuild"
-        password = "zxxaf209c17bce60b19383e081cf26140d6"
+        password = "credentialsJSON:626c5172-50ba-46ca-a33f-97ae69170e2f"
     }
 })

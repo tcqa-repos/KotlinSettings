@@ -67,6 +67,7 @@ object Project : Project({
             rootExtId = "HttpsGithubComTcqaReposVersionedSettings"
             showChanges = false
             settingsFormat = VersionedSettings.Format.KOTLIN
+            param("credentialsStorageType", "credentialsJSON")
         }
     }
 })

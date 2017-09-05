@@ -17,6 +17,6 @@ object Kotlin_KotlinGithubKotlinBuild1 : GitVcsRoot({
     """.trimIndent()
     authMethod = password {
         userName = "yole"
-        password = "zxx4bf891eaf2acfa7416fa0f5a3ef609f8"
+        password = "credentialsJSON:48764f2b-2173-44a0-aa91-5586957ea239"
     }
 })

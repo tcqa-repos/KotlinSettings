@@ -79,11 +79,11 @@ object Kotlin_CompilerAndPluginUltimateTestsOnly : BuildType({
             makeRequiredModulesOnly = true
             artifactsToBuild = "%idea.build.16.artifacts%"
             reduceTestFeedback = IdeaRunner.TestPolicy.RECENTLY_FAILED_AND_MODIFIED
+            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
             param("teamcity.coverage.idea.excludePatterns", """
                 #teamcity:patternsMode=regexp
                 org.jetbrains.jet.cli.*
             """.trimIndent())
-            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
         }
         ideaRunner {
             name = "IntelliJ IDEA Project - Java 1.8 (1)"
@@ -113,11 +113,11 @@ object Kotlin_CompilerAndPluginUltimateTestsOnly : BuildType({
             incrementalMake = true
             artifactsToBuild = "%idea.build.18.artifacts%"
             reduceTestFeedback = IdeaRunner.TestPolicy.RECENTLY_FAILED_AND_MODIFIED
+            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
             param("teamcity.coverage.idea.excludePatterns", """
                 #teamcity:patternsMode=regexp
                 org.jetbrains.jet.cli.*
             """.trimIndent())
-            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
         }
         stepsOrder = arrayListOf("RUNNER_777", "RUNNER_58", "RUNNER_60", "RUNNER_96", "RUNNER_65", "RUNNER_740", "RUNNER_775", "RUNNER_741", "RUNNER_821", "RUNNER_19", "RUNNER_33", "RUNNER_112", "RUNNER_246", "RUNNER_255", "RUNNER_66", "RUNNER_95")
     }

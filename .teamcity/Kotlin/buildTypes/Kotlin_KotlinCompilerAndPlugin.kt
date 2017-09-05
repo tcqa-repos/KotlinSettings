@@ -723,9 +723,9 @@ object Kotlin_KotlinCompilerAndPlugin : Template({
             antArguments = "-Dfile.encoding=UTF8"
             jdkHome = "%env.JDK_16%"
             jvmArgs = "%compiler.step.ant.jvm.args%"
-            param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "udalov")
             param("org.jfrog.artifactory.selectedDeployableServer.overrideDefaultDeployerCredentials", "true")
-            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "zxx10a7df6d479251d4de4363f3ccae2df8")
+            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "credentialsJSON:04f1f14d-e372-4219-8bbe-03a8bea92888")
+            param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "udalov")
         }
         ideaRunner {
             name = "IntelliJ IDEA Project - Java 1.6"
@@ -756,11 +756,11 @@ object Kotlin_KotlinCompilerAndPlugin : Template({
             makeRequiredModulesOnly = true
             artifactsToBuild = "%idea.build.16.artifacts%"
             reduceTestFeedback = IdeaRunner.TestPolicy.RECENTLY_FAILED_AND_MODIFIED
+            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
             param("teamcity.coverage.idea.excludePatterns", """
                 #teamcity:patternsMode=regexp
                 org.jetbrains.jet.cli.*
             """.trimIndent())
-            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
         }
         ideaRunner {
             name = "IntelliJ IDEA Project - Java 1.8 - Build artifacts"
@@ -790,11 +790,11 @@ object Kotlin_KotlinCompilerAndPlugin : Template({
             incrementalMake = true
             artifactsToBuild = "%idea.build.18.artifacts%"
             reduceTestFeedback = IdeaRunner.TestPolicy.RECENTLY_FAILED_AND_MODIFIED
+            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
             param("teamcity.coverage.idea.excludePatterns", """
                 #teamcity:patternsMode=regexp
                 org.jetbrains.jet.cli.*
             """.trimIndent())
-            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
         }
         ideaRunner {
             name = "IntelliJ IDEA Project - Java 1.8 - Running tests"
@@ -824,11 +824,11 @@ object Kotlin_KotlinCompilerAndPlugin : Template({
             runConfigurations = "%idea.build.18.run.configurations%"
             incrementalMake = true
             reduceTestFeedback = IdeaRunner.TestPolicy.RECENTLY_FAILED_AND_MODIFIED
+            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
             param("teamcity.coverage.idea.excludePatterns", """
                 #teamcity:patternsMode=regexp
                 org.jetbrains.jet.cli.*
             """.trimIndent())
-            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
         }
         ant {
             name = "Ultimate Project: Fetch Dependencies"
@@ -876,11 +876,11 @@ object Kotlin_KotlinCompilerAndPlugin : Template({
             targetJdkHome = "%env.JDK_18%"
             makeRequiredModulesOnly = true
             artifactsToBuild = "%kotlin.ultimate.dummy.artifact%"
+            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
             param("teamcity.coverage.idea.excludePatterns", """
                 #teamcity:patternsMode=regexp
                 org.jetbrains.jet.cli.*
             """.trimIndent())
-            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
         }
         ant {
             name = "Ultimate Project: Build Artifacts"
@@ -951,11 +951,11 @@ object Kotlin_KotlinCompilerAndPlugin : Template({
             incrementalMake = true
             makeRequiredModulesOnly = true
             reduceTestFeedback = IdeaRunner.TestPolicy.RECENTLY_FAILED_AND_MODIFIED
+            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
             param("teamcity.coverage.idea.excludePatterns", """
                 #teamcity:patternsMode=regexp
                 org.jetbrains.jet.cli.*
             """.trimIndent())
-            param("teamcity.coverage.idea.includePatterns", "org.jetbrains.jet.*")
         }
         ant {
             name = "Post Build"
@@ -1009,8 +1009,8 @@ object Kotlin_KotlinCompilerAndPlugin : Template({
             }
             antArguments = "-v"
             jdkHome = "%env.JDK_16%"
+            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "credentialsJSON:dc7b3645-c5f2-4edc-bd31-24075e1efa23")
             param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "udalov")
-            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "zxx07d67df0d96aad3350e276915eed3f06863eb00272fa1d7f")
         }
     }
 

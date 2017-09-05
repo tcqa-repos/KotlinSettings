@@ -69,8 +69,8 @@ object bt390 : BuildType({
                     </project>
                 """.trimIndent()
             }
+            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "credentialsJSON:ca821363-e8f7-4770-a063-249ebe9c48bf")
             param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "ilya.gorbunov@jetbrains.com")
-            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "zxx8c2a7eb4026210ed775d03cbe80d301b")
         }
         maven {
             name = "Libraries"
@@ -81,13 +81,12 @@ object bt390 : BuildType({
             userSettingsSelection = "jb mirror"
             userSettingsPath = ""
             useOwnLocalRepo = true
-            param("jvmArgs", "-Xmx1200m -XX:MaxPermSize=350m")
-            param("maven.home", "")
-            param("org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration", "GLOBAL")
-            param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "yole")
-            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "zxx4bf891eaf2acfa7416fa0f5a3ef609f8")
-            param("target.jdk.home", "%env.JDK_16%")
+            jdkHome = "%env.JDK_16%"
+            jvmArgs = "-Xmx1200m -XX:MaxPermSize=350m"
             param("teamcity.build.workingDir", "libraries")
+            param("org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration", "GLOBAL")
+            param("secure:org.jfrog.artifactory.selectedDeployableServer.deployerPassword", "credentialsJSON:48764f2b-2173-44a0-aa91-5586957ea239")
+            param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "yole")
         }
     }
 
@@ -106,7 +105,7 @@ object bt390 : BuildType({
                 hour = 8
             }
             triggerBuild = always()
-            param("enforceCleanCheckout", "true")
+            enforceCleanCheckout = true
             param("dayOfWeek", "Sunday")
         }
         trigger {

@@ -14,7 +14,7 @@ object Kotlin_DeployToJetBrainsPluginRepo : BuildType({
 
     params {
         text("1.username", "", label = "username", description = "Your username on plugins.jetbrains.com", display = ParameterDisplay.PROMPT, allowEmpty = false)
-        password("2.password", "zxx775d03cbe80d301b", label = "password", description = "Your password on plugins.jetbrains.com", display = ParameterDisplay.PROMPT)
+        password("2.password", "credentialsJSON:7c2c8dee-0b07-4b25-9ebf-f2a328a7f82e", label = "password", description = "Your password on plugins.jetbrains.com", display = ParameterDisplay.PROMPT)
         text("3.channel", "", label = "channel", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 

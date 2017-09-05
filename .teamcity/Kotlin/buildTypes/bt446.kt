@@ -34,6 +34,7 @@ object bt446 : BuildType({
             goals = "clean package"
             pomLocation = "maven/pom.xml"
             runnerArgs = "-U"
+            mavenVersion = auto()
             userSettingsSelection = "jb mirror"
             useOwnLocalRepo = true
             param("org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration", "GLOBAL")
