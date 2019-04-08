@@ -1,0 +1,5 @@
+task hi() {
+    doLast {
+        println "Hello World!"
+    }
+}
