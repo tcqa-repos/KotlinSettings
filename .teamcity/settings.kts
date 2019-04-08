@@ -40,8 +40,9 @@ object Build : BuildType({
     steps {
         gradle {
             tasks = "hi"
-            buildFile = "base/project/build.gradle"
-            gradleWrapperPath = "base"
+            buildFile = "build.gradle"
+            gradleWrapperPath = ".."
+            workingDir = "base/project"
         }
     }
 })
