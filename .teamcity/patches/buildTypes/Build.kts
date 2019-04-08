@@ -21,7 +21,7 @@ changeBuildType(RelativeId("Build")) {
     }
     steps {
         update<GradleBuildStep>(0) {
-            dockerImage = "java8"
+            dockerImage = "openjdk"
         }
     }
 }
