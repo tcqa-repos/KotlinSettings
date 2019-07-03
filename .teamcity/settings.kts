@@ -54,8 +54,3 @@ object SubProject : Project({
 object Project_Build : BuildType({
     name = "Build"
 })
-
-object myprojectvcsroot : GitVcsRoot({
-   name = “myprojectroot”
-   url = "https://github.com/tcqa-repos/myproject.git"
-})
