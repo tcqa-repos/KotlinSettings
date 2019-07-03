@@ -48,10 +48,21 @@ object Build : BuildType({
 
 object SubProject : Project({
     name = "Sub Project"
-
+    
+    vcs {
+        myprojectvcsroot
+    }
     buildType(Project_Build)
 })
 
 object Project_Build : BuildType({
     name = "Build"
+})
+
+object myprojectvcsroot : GitVcsRoot({
+   name = “myprojectroot”
+   url = "ssh://git@github.com/tcqa-repos/myproject.git"
+   authMethod = uploadedKey {
+       uploadedKey = “mykey”
+   }
 })
