@@ -61,5 +61,8 @@ object Project_Build : BuildType({
 
 object myroot : GitVcsRoot({
     name = "myroot"
-    url = "https://github.com/tcqa-repos/myproject"
+    url = "ssh://git@github.com/tcqa-repos/myproject"
+    authMethod = uploadedKey {
+       uploadedKey = "ge.key"
+    }
 })
