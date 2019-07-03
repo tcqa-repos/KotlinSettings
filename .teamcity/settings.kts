@@ -1,5 +1,6 @@
 import jetbrains.buildServer.configs.kotlin.v2018_1.*
 import jetbrains.buildServer.configs.kotlin.v2018_1.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.v2018_1.vcs.GitVcsRoot
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -48,9 +49,17 @@ object Build : BuildType({
 
 object SubProject : Project({
     name = "Sub Project"
+
+    vcsRoot(SubProject_HttpsGithubComTcqaReposMyproject)
+
     buildType(Project_Build)
 })
 
 object Project_Build : BuildType({
     name = "Build"
+})
+
+object SubProject_HttpsGithubComTcqaReposMyproject : GitVcsRoot({
+    name = "https://github.com/tcqa-repos/myproject"
+    url = "https://github.com/tcqa-repos/myproject"
 })
