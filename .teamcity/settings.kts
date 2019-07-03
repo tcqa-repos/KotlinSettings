@@ -50,7 +50,7 @@ object Build : BuildType({
 object SubProject : Project({
     name = "Sub Project"
 
-    vcsRoot(SubProject_HttpsGithubComTcqaReposMyproject)
+    vcsRoot(myroot)
 
     buildType(Project_Build)
 })
@@ -60,6 +60,6 @@ object Project_Build : BuildType({
 })
 
 object SubProject_HttpsGithubComTcqaReposMyproject : GitVcsRoot({
-    name = "https://github.com/tcqa-repos/myproject"
+    name = "myroot"
     url = "https://github.com/tcqa-repos/myproject"
 })
