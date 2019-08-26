@@ -35,4 +35,5 @@ project {
 
 object Test : BuildType({
     name = "Test"
+    id("Te st")
 })
