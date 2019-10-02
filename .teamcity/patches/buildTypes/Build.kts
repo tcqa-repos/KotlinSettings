@@ -29,6 +29,13 @@ changeBuildType(RelativeId("Build")) {
     }
     maxRunningBuilds = 1
 
+    params {
+        add {
+            checkbox("param", "", display = ParameterDisplay.PROMPT,
+                      checked = "true")
+        }
+    }
+
     vcs {
         expectEntry(RelativeId("HttpsGithubComTcqaReposMyProject"))
         root(RelativeId("HttpsGithubComTcqaReposMyProject"), "+:test2")
