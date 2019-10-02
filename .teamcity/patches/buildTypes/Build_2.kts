@@ -22,6 +22,7 @@ create(DslContext.projectId, BuildType({
 
     triggers {
         vcs {
+            enabled = false
         }
     }
 }))
