@@ -31,7 +31,7 @@ changeBuildType(RelativeId("Build")) {
 
     vcs {
         expectEntry(RelativeId("HttpsGithubComTcqaReposMyProject"))
-        root(RelativeId("HttpsGithubComTcqaReposMyProject"), "+:test")
+        root(RelativeId("HttpsGithubComTcqaReposMyProject"), "+:test2")
     }
 
     dependencies {
