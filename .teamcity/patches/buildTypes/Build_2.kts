@@ -13,6 +13,8 @@ create(DslContext.projectId, BuildType({
     id("Build_2")
     name = "Build"
 
+    artifactRules = ".teamcity => artifacts.zip"
+
     vcs {
         root(RelativeId("HttpsGithubComTcqaReposMyProject"))
     }
