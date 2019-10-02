@@ -9,6 +9,11 @@ To apply the patch, change the buildType with id = 'Build'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("Build")) {
+    check(name == "Build") {
+        "Unexpected name: '$name'"
+    }
+    name = "Deploy"
+
     check(enablePersonalBuilds == true) {
         "Unexpected option value: enablePersonalBuilds = $enablePersonalBuilds"
     }
