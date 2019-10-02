@@ -12,5 +12,9 @@ in the root project, and delete the patch script.
 create(DslContext.projectId, BuildType({
     id("Build_2")
     name = "Build"
+
+    vcs {
+        root(RelativeId("HttpsGithubComTcqaReposMyProject"))
+    }
 }))
 
