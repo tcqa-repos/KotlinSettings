@@ -33,4 +33,14 @@ changeBuildType(RelativeId("Build")) {
         expectEntry(RelativeId("HttpsGithubComTcqaReposMyProject"))
         root(RelativeId("HttpsGithubComTcqaReposMyProject"), "+:test")
     }
+
+    dependencies {
+        add(RelativeId("Build_2")) {
+            artifacts {
+                buildRule = lastSuccessful()
+                artifactRules = "*"
+            }
+        }
+
+    }
 }
