@@ -1,4 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.v2018_2.*
+import jetbrains.buildServer.configs.kotlin.v2018_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2018_2.vcs.GitVcsRoot
 
 /*
@@ -28,19 +29,66 @@ version = "2019.1"
 project {
 
     vcsRoot(HttpsGithubComTcqaReposMyProject)
+    vcsRoot(HttpsGithubComTcqaReposMyProject_2)
 
+    buildType(Build_2)
     buildType(Build)
 }
 
 object Build : BuildType({
-    name = "Build"
+    name = "Deploy"
+
+    enablePersonalBuilds = false
+    type = BuildTypeSettings.Type.DEPLOYMENT
+    maxRunningBuilds = 1
+
+    params {
+        checkbox("param", "", display = ParameterDisplay.PROMPT,
+                  checked = "true")
+    }
 
     vcs {
         root(HttpsGithubComTcqaReposMyProject)
+
+        showDependenciesChanges = true
+    }
+
+    dependencies {
+        dependency(Build_2) {
+            snapshot {
+            }
+
+            artifacts {
+                buildRule = lastSuccessful("%teamcity.build.branch%")
+                artifactRules = "*"
+            }
+        }
+    }
+})
+
+object Build_2 : BuildType({
+    name = "Build"
+
+    artifactRules = ".teamcity => artifacts.zip"
+
+    vcs {
+        root(HttpsGithubComTcqaReposMyProject_2)
+    }
+
+    triggers {
+        vcs {
+            enabled = false
+        }
     }
 })
 
 object HttpsGithubComTcqaReposMyProject : GitVcsRoot({
     name = "https://github.com/tcqa-repos/MyProject"
     url = "https://github.com/tcqa-repos/MyProject"
+    branchSpec = "+:*"
+})
+
+object HttpsGithubComTcqaReposMyProject_2 : GitVcsRoot({
+    name = "https://github.com/tcqa-repos/My.Project"
+    url = "https://github.com/tcqa-repos/My.Project"
 })
