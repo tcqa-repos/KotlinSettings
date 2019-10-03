@@ -43,6 +43,9 @@ changeBuildType(RelativeId("Build")) {
 
     dependencies {
         add(RelativeId("Build_2")) {
+            snapshot {
+            }
+
             artifacts {
                 buildRule = lastSuccessful("%teamcity.build.branch%")
                 artifactRules = "*"
