@@ -42,8 +42,6 @@ changeBuildType(RelativeId("Build")) {
             "Unexpected option value: showDependenciesChanges = $showDependenciesChanges"
         }
         showDependenciesChanges = true
-
-        remove(RelativeId("HttpsGithubComTcqaReposMyProject"))
     }
 
     dependencies {
