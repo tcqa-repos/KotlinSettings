@@ -16,10 +16,6 @@ create(DslContext.projectId, BuildType({
 
     artifactRules = ".teamcity => artifacts.zip"
 
-    vcs {
-        root(RelativeId("HttpsGithubComTcqaReposMyProject"))
-    }
-
     triggers {
         vcs {
             enabled = false
