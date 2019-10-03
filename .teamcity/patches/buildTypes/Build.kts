@@ -43,8 +43,7 @@ changeBuildType(RelativeId("Build")) {
         }
         showDependenciesChanges = true
 
-        expectEntry(RelativeId("HttpsGithubComTcqaReposMyProject"))
-        root(RelativeId("HttpsGithubComTcqaReposMyProject"), "+:test2")
+        remove(RelativeId("HttpsGithubComTcqaReposMyProject"))
     }
 
     dependencies {
