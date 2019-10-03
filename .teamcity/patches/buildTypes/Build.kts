@@ -37,6 +37,12 @@ changeBuildType(RelativeId("Build")) {
     }
 
     vcs {
+
+        check(showDependenciesChanges == false) {
+            "Unexpected option value: showDependenciesChanges = $showDependenciesChanges"
+        }
+        showDependenciesChanges = true
+
         expectEntry(RelativeId("HttpsGithubComTcqaReposMyProject"))
         root(RelativeId("HttpsGithubComTcqaReposMyProject"), "+:test2")
     }
