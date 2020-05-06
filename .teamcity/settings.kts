@@ -31,7 +31,7 @@ project {
 }
 
 object BuildWithArtifacts : BuildType({
-    name = "build with artifacts"
+    name = "build with artifactss"
 
     artifactRules = "**/* => a.zip"
 
