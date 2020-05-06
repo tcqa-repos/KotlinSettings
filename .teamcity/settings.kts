@@ -41,6 +41,7 @@ object Rake : BuildType({
                    p "hello world!!"                 # print "hello world!"
                 end
             """.trimIndent())
+            param("ui.rakeRunner.bunlder.exec.enabled", "false")
             param("ui.rakeRunner.rake.tasks.names", "hello_world")
             param("use-custom-build-file", "true")
         }
