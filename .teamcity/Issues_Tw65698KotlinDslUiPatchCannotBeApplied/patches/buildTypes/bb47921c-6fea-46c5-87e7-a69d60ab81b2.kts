@@ -12,21 +12,25 @@ changeBuildType(AbsoluteId("Issues_Tw65698KotlinDslUiPatchCannotBeApplied_UseArt
     dependencies {
         expect(AbsoluteId("Issues_Tw65698KotlinDslUiPatchCannotBeApplied_BuildWithArtifacts")) {
             artifacts {
+                id = "a"
                 buildRule = lastSuccessful()
                 artifactRules = "* => a"
             }
             artifacts {
+                id = "b"
                 buildRule = tag("qwe")
                 artifactRules = "* => qwe"
             }
         }
         update(AbsoluteId("Issues_Tw65698KotlinDslUiPatchCannotBeApplied_BuildWithArtifacts")) {
             artifacts {
+                id = "a"
                 buildRule = lastSuccessful()
                 cleanDestination = true
                 artifactRules = "* => a"
             }
             artifacts {
+                id = "b"
                 buildRule = lastPinned()
                 cleanDestination = true
                 artifactRules = "* => qwe"
