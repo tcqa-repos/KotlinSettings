@@ -47,15 +47,18 @@ object UseArtifacts : BuildType({
 
     dependencies {
         artifacts(AbsoluteId("AnsiStyleColorCodesInBuildLog_Ant")) {
+            id = "qwerty"
             buildRule = lastSuccessful()
             artifactRules = "*"
         }
         dependency(BuildWithArtifacts) {
             artifacts {
+                id = "a"
                 buildRule = lastSuccessful()
                 artifactRules = "* => a"
             }
             artifacts {
+                id = "b"
                 buildRule = lastSuccessful()
                 artifactRules = "* => b"
             }
