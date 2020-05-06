@@ -38,7 +38,7 @@ object Rake : BuildType({
             param("build-file", """
                 desc "print hello world!"        # description.
                 task "hello_world" do            # rake task name.
-                   p "hello world!"                 # print "hello world!"
+                   p "hello world!!"                 # print "hello world!"
                 end
             """.trimIndent())
             param("ui.rakeRunner.rake.tasks.names", "hello_world")
