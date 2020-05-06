@@ -23,6 +23,7 @@ changeBuildType(AbsoluteId("Issues_Tw65698KotlinDslUiPatchCannotBeApplied_UseArt
         update(AbsoluteId("Issues_Tw65698KotlinDslUiPatchCannotBeApplied_BuildWithArtifacts")) {
             artifacts {
                 buildRule = lastSuccessful()
+                cleanDestination = true
                 artifactRules = "* => a"
             }
             artifacts {
