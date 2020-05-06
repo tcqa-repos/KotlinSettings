@@ -48,10 +48,12 @@ object UseArtifacts : BuildType({
     dependencies {
         dependency(BuildWithArtifacts) {
             artifacts {
+                id = "ARTIFACT_DEPENDENCY_CURR"
                 buildRule = lastSuccessful()
                 artifactRules = "* => a"
             }
             artifacts {
+                id = "ARTIFACT_DEPENDENCY_PREV"
                 buildRule = lastPinned()
                 artifactRules = "* => b"
             }
