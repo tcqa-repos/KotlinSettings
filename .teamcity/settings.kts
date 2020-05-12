@@ -7,7 +7,7 @@ The settings script is an entry point for defining a TeamCity
 project hierarchy. The script should contain a single call to the
 project() function with a Project instance or an init function as
 an argument.
-
+asdfg
 VcsRoots, BuildTypes, Templates, and subprojects can be
 registered inside the project using the vcsRoot(), buildType(),
 template(), and subProject() methods respectively.
