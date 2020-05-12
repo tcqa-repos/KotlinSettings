@@ -16,7 +16,7 @@ changeBuildType(RelativeId("Build")) {
             password("token", "credentialsJSON:72682f1f-468c-4b1b-9f0e-b26753de06ec")
         }
         add {
-            password("token2", "credentialsJSON:72682f1f-468c-4b1b-9f0e-b26753de06ec")
+            password("token2", "zxx7afcd44dcb03c6e4fa98ac935deb1e2d3399972361ec799f043252a8d133e9e9cfde454640af56f3775d03cbe80d301b")
         }
     }
 
@@ -36,7 +36,7 @@ changeBuildType(RelativeId("Build")) {
             provider = github {
                 serverUrl = ""
                 authType = token {
-                    token = "credentialsJSON:be54ad91-9a4d-4990-ac9d-0ec3ea1ff081"
+                    token = "zxxd6fe2decc9a937bf775d03cbe80d301b"
                 }
                 filterTargetBranch = ""
                 filterAuthorRole = PullRequests.GitHubRoleFilter.MEMBER
