@@ -36,7 +36,7 @@ changeBuildType(RelativeId("Build")) {
             provider = github {
                 serverUrl = ""
                 authType = token {
-                    token = "zxxd6fe2decc9a937bf775d03cbe80d301b"
+                    token = "zxx1f626663f8870639"
                 }
                 filterTargetBranch = ""
                 filterAuthorRole = PullRequests.GitHubRoleFilter.MEMBER
