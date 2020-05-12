@@ -1,6 +1,8 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.pullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.ui.*
 
 /*
@@ -15,6 +17,30 @@ changeBuildType(RelativeId("Build")) {
         }
         add {
             password("token2", "credentialsJSON:72682f1f-468c-4b1b-9f0e-b26753de06ec")
+        }
+    }
+
+    features {
+        val feature1 = find<PullRequests> {
+            pullRequests {
+                vcsRootExtId = "Issues_HttpsGithubComTcqaReposCalculatorRefsHeadsMaster"
+                provider = github {
+                    authType = token {
+                        token = "credentialsJSON:e8227979-5f7f-4188-94b9-1ed53ce8299d"
+                    }
+                    filterAuthorRole = PullRequests.GitHubRoleFilter.MEMBER
+                }
+            }
+        }
+        feature1.apply {
+            provider = github {
+                serverUrl = ""
+                authType = token {
+                    token = "credentialsJSON:be54ad91-9a4d-4990-ac9d-0ec3ea1ff081"
+                }
+                filterTargetBranch = ""
+                filterAuthorRole = PullRequests.GitHubRoleFilter.MEMBER
+            }
         }
     }
 }
