@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" parent-id="Issues_Tw66783LockingUiViaKotlinDslLockAlsoEnablingSynchronisationForAllSu" uuid="f17c2c02-a592-40f9-9d7e-1867455ba666" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2020.1/project-config.xsd">
+  <name>SubProject1</name>
+  <parameters />
+  <cleanup />
+</project>
+
