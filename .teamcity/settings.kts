@@ -26,7 +26,6 @@ version = "2020.1"
 
 project {
 
-    subProject(SubProject1_2)
     subProject(SubProject1)
 }
 
