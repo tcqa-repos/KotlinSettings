@@ -40,14 +40,3 @@ object SubProject1 : Project({
 object SubProject1_Build : BuildType({
     name = "Build"
 })
-
-
-object SubProject1_2 : Project({
-    name = "SubProject1 (1)"
-
-    buildType(SubProject1_2_Build)
-})
-
-object SubProject1_2_Build : BuildType({
-    name = "Build"
-})
