@@ -38,7 +38,7 @@ object SubProject1 : Project({
 })
 
 object SubProject1_Build : BuildType({
-    name = "Build"
+    name = "Build3"
 })
 
 
