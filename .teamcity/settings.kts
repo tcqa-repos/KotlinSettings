@@ -26,8 +26,6 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2020.1"
 
 project {
-
-    subProject(SubProject1_2)
     subProject(SubProject1)
 }
 
@@ -43,24 +41,3 @@ object SubProject1_Build : BuildType({
 })
 
 
-object SubProject1_2 : Project({
-    name = "SubProject1 (1)"
-
-    vcsRoot(SubProject1_2_HttpsGithubComTcqaReposKotlinSettingsRefsHeadsMaster)
-
-    buildType(SubProject1_2_Build)
-})
-
-object SubProject1_2_Build : BuildType({
-    name = "Build2"
-})
-
-object SubProject1_2_HttpsGithubComTcqaReposKotlinSettingsRefsHeadsMaster : GitVcsRoot({
-    name = "https://github.com/tcqa-repos/KotlinSettings"
-    url = "https://github.com/tcqa-repos/KotlinSettings"
-    branch = "refs/heads/TW-66783-2"
-    authMethod = password {
-        userName = "tcqa-repos"
-        password = "credentialsJSON:f450f0e3-c536-4090-89d4-1928a49c4a6b"
-    }
-})
